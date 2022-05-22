@@ -1,6 +1,6 @@
 # Github Explore Repository
 
-![cryptomoon](![localhost_8080_ (1)](https://user-images.githubusercontent.com/58709086/169720386-2398ba26-7855-4abf-bb49-97485dd8d275.png))
+![localhost_8080_ (1)](https://user-images.githubusercontent.com/58709086/169720386-2398ba26-7855-4abf-bb49-97485dd8d275.png)
 
 ## Built With 🔨
 - TypeScript
