@@ -5,28 +5,39 @@ import '../styles/repositories.scss';
 interface Repository {
     name: string;
     description: string;
-    url: string
+    html_url: string;
+    owner: {
+        login: string;
+        avatar_url: string;
+    };
+    license: {
+        name: string;
+    };
+    stargazers_count: number;
+    watchers_count: number;
+    forks_count: number;
+    topics: string[]
 }
 
-export function RepositoryList(){
-    const [ repositories, setRepositories ] = useState<Repository[]>([])
+
+export function RepositoryList() {
+    const [repositories, setRepositories] = useState<Repository[]>([])
     useEffect(() => {
         async function loadRepositories() {
-            const URL = 'https://api.github.com/orgs/rocketseat/repos'
+            const URL = 'https://api.github.com/search/repositories?q=app'
             const response = await fetch(URL)
-            const data = await  response.json()
-            setRepositories(data)
+            const data = await response.json()
+
+            setRepositories(data.items)
         }
         loadRepositories()
     }, [])
 
     return (
         <section className="repository-list">
-            <h1>Lista de repositórios</h1>
-
             <ul>
-                {repositories.map(repository => (
-                        <RepositoryItem key={repository.name} repository={repository}/>
+                {repositories.map((repository, index) => (
+                    <RepositoryItem key={index} repository={repository} />
                 ))}
             </ul>
         </section>
